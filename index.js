@@ -38,11 +38,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/editor', (req, res) => {
-	const dirTree = require('directory-tree');
-	const tree = dirTree(process.cwd());
-	res.renderPug('editor', {
-		tree
-	})
+	try {
+		const dirTree = require('directory-tree');
+		const p =  process.cwd() //process.env.SITES_FOLDER ||
+		const tree = dirTree(p, {exclude:/\node_modules$/});
+		res.renderPug('editor', {
+			tree
+		})
+	} catch (err) {
+		console.error(err.stack)
+		res.send(500)
+	}
 })
 
 app.post('/request-file', parseJson, async (req, res) => {
