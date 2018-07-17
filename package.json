@@ -1,17 +1,26 @@
 {
-  "name": "wedev",
+  "name": "wedev2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-  	"prestart":"npm install",
-    "start": "node index.js"
+    "prestart": "npm install",
+    "start": "node index.js",
+    "dev": "npx nodemon --exec 'node index.js' -e js,css,scss,jsx,html,pug",
+    "dev:js": "npx nodemon --exec 'npx babel js --ignore public/bundle.js --ignore public/bundle.js.map  --out-file public/bundle.js --copy-files --source-maps' --watch js  -e js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "directory-tree": "^2.1.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "pug": "^2.0.3"
+    "nodemon": "^1.18.2",
+    "pug": "^2.0.3",
+    "v-treeview": "^0.2.1",
+    "webpack": "^4.16.1"
   }
 }
